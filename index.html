@@ -3,88 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joline - Développeuse Web Frontend</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Joline Tebu - Développeuse Frontend</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#accueil">
-                <div class="profile-circle me-2">
-                    <img src="images/photo2.jpg" alt="Joline" class="profile-img">
+    <!-- Navigation Sophistiquée -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="#accueil">
+                <div class="profile-circle">
+                    <img src="images/photo2.jpg" alt="Joline">
                 </div>
-                <span class="fw-bold">JOLINE</span>
+                <span class="brand-text">JOLINE</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#accueil">ACCUEIL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#apropos">À PROPOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projets">PROJETS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
-                    </li>
-                </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#apropos" class="nav-link">À Propos</a></li>
+                <li><a href="#projets" class="nav-link">Projets</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Section Accueil -->
+    <!-- Hero Section Sophistiquée -->
     <section id="accueil" class="hero-section">
-        <div class="social-sidebar">
-            <a href="https://www.linkedin.com/in/joline-tebu-8ab935345/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon"><i class="fas fa-book"></i></a>
+        <div class="hero-background">
+            <div class="gradient-orb gradient-orb-1"></div>
+            <div class="gradient-orb gradient-orb-2"></div>
+            <div class="gradient-orb gradient-orb-3"></div>
         </div>
-        <div class="container text-center">
-            <h1 class="hero-title">HEY, I AM JOLINE TEBU</h1>
-            <p class="hero-subtitle">Développeuse Frontend qui donne vie à vos ambitions digitales à travers des solutions web innovantes et impactantes</p>
-            <a href="#projets" class="btn btn-primary btn-lg mt-4">PROJETS</a>
+
+        <div class="social-sidebar">
+            <a href="https://www.linkedin.com/in/joline-tebu-8ab935345/" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/joleen2026/" class="social-link" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-link" title="Portfolio">
+                <i class="fas fa-book"></i>
+            </a>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-word">Créatrice</span>
+                    <span class="title-word">D'expériences</span>
+                    <span class="title-word highlight">Web Modernes</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Je suis Joline Tebu Développeuse Frontend qui transforme vos idées en solutions digitales innovantes, élégantes et impactantes.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projets" class="btn btn-primary btn-lg">
+                        <span>Découvrir mes projets</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-lg">
+                        <span>Me contacter</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <div class="floating-card card-1">
+                    <i class="fas fa-code"></i>
+                    <span>Frontend</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-palette"></i>
+                    <span>Design</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-rocket"></i>
+                    <span>Innovation</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-dot"></div>
         </div>
     </section>
 
     <!-- Section À Propos -->
-    <section id="apropos" class="section-padding">
+    <section id="apropos" class="about-section">
         <div class="container">
-            <h2 class="section-title text-center">SUR MOI</h2>
-            <div class="title-underline"></div>
-            <p class="text-center text-muted mb-5">Vous trouverez ici plus d'informations sur moi, ce que je fais et mes compétences actuelles, principalement en termes de programmation et de technologie.</p>
-            
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h3 class="mb-4">Apprenez à me connaître !</h3>
-                    <p>Je suis une <strong>développeuse web spécialisée en front-end</strong>. Je développe et gère le front-end de sites web et d'applications web, contribuant ainsi au succès de nos produits. Découvrez quelques-unes de mes réalisations dans la section « <a href="#projets">Projets</a> ».</p>
-                    
-                    <p>J'aime aussi partager du contenu lié à mes connaissances en <strong>développement web</strong> au fil des ans afin d'aider les autres membres de la communauté des développeurs. N'hésitez pas à me contacter ou à me suivre sur <a href="#">Linkedin</a> , où je publie du contenu utile sur le développement web et la programmation.</p>
-                    
-                    <p>Je suis ouverte aux opportunités <strong>d'emploi</strong> qui me permettent de contribuer, d'apprendre et de m'épanouir. Si vous avez une opportunité qui correspond à mes compétences et à mon expérience, n'hésitez pas à me <strong>contacter</strong>.</p>
-                    
-                    <a href="#contact" class="btn btn-primary mt-3">CONTACT</a>
+            <div class="section-header">
+                <h2 class="section-title">À Propos de Moi</h2>
+                <p class="section-subtitle">Développeuse passionnée par la création d'interfaces web exceptionnelles</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-subtitle">Qui suis-je ?</h3>
+                    <p>
+                        Je suis une <strong>développeuse web frontend spécialisée</strong> créant des expériences numériques captivantes et performantes. 
+                        Avec une passion pour le code propre et les designs innovants, je transforme chaque projet en une histoire interactive.
+                    </p>
+                    <p>
+                        Mon approche combine <strong>rigueur technique</strong>, <strong>créativité</strong> et <strong>attention au détail</strong> 
+                        pour livrer des solutions qui dépassent les attentes.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">✦</div>
+                            <div class="highlight-text">Design Responsive</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">✦</div>
+                            <div class="highlight-text">Performance Web</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">✦</div>
+                            <div class="highlight-text">UX/UI Moderne</div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="col-lg-6">
-                    <h3 class="mb-4">Mes compétences</h3>
-                    <div class="skills-container">
-                        <span class="skill-badge">HTML</span>
-                        <span class="skill-badge">CSS</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">Angular</span>
-                        <span class="skill-badge">WordPress</span>
-                        <span class="skill-badge">PHP</span>
-                        <span class="skill-badge">GIT</span>
-                        <span class="skill-badge">Github</span>
-                        <span class="skill-badge">Conception réactive</span>
+
+                <div class="skills-section">
+                    <h3 class="about-subtitle">Compétences</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 93%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-palette" aria-hidden="true"></i>
+                                <span>Canva</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-angular"></i>
+                                <span>Angular</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git/GitHub</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-wordpress"></i>
+                                <span>WordPress</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i class="fab fa-php"></i>
+                                <span>PHP</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,149 +209,209 @@
     </section>
 
     <!-- Section Projets -->
-    <section id="projets" class="section-padding bg-light">
+    <section id="projets" class="projects-section">
         <div class="container">
-            <h2 class="section-title text-center">PROJETS</h2>
-            <div class="title-underline"></div>
-            <p class="text-center text-muted mb-5">Vous trouverez ici quelques-uns des projets personnels et clients que j'ai créés, chaque projet contenant sa propre étude de cas</p>
-            
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-6 mb-4">
-                    <div class="project-image">
-                        <img src="images/dreamstock.png" alt="Dreamstock" class="img-fluid rounded shadow">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-3">Dreamstock</h3>
-                    <p class="text-muted">Dreamstock : application web complète de gestion de stock développée pour DreamTech. Elle offre un suivi en temps réel des inventaires, des alertes automatiques et des rapports détaillés pour une gestion optimale des ressources de l'entreprise.</p>
-                    <a href="#" class="btn btn-primary">EN SAVOIR PLUS</a>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">Projets Remarquables</h2>
+                <p class="section-subtitle">Une sélection de projets qui illustrent mon expertise et ma créativité</p>
             </div>
 
-            <div class="row align-items-center mb-5 flex-lg-row-reverse">
-                <div class="col-lg-6 mb-4">
+            <div class="projects-grid">
+                <!-- Projet 1 -->
+                <article class="project-card project-card-1">
                     <div class="project-image">
-                        <img src="./images/ets-ngounou.png" alt="Ets Ngounou" class="img-fluid rounded shadow">
+                        <img src="images/dreamstock.png" alt="Dreamstock">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">Web App</span>
+                                <span class="tag">Stock Management</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-3">Ets Ngounou</h3>
-                    <p class="text-muted">Site vitrine développé pour Ets Ngounou, une entreprise de Douala dédiée aux poissons frais et produits de mer. Une plateforme web attractive qui capture l'essence de la fraîcheur maritime et facilite la découverte des produits.</p>
-                    <a href="https://ngounoup.netlify.app/" class="btn btn-primary">EN SAVOIR PLUS</a>
-                </div>
-            </div>
+                    <div class="project-info">
+                        <h3>Dreamstock</h3>
+                        <p>Application complète de gestion de stock avec suivi en temps réel, alertes automatiques et rapports détaillés pour DreamTech.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Html</span>
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">MySQL</span>
+                        </div>
+                        <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4">
+                <!-- Projet 2 -->
+                <article class="project-card project-card-2">
                     <div class="project-image">
-                        <img src="images/delices-sawa.png" alt="Projet 3" class="img-fluid rounded shadow">
+                        <img src="images/ets-ngounou.png" alt="Ets Ngounou">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">E-Commerce</span>
+                                <span class="tag">Seafood</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-3">Les Delices Sawa</h3>
-                    <p class="text-muted">J'ai créé le site e-commerce des Délices Sawa, un restaurant-bar yaoundéen qui fait découvrir la gastronomie Sawa. Cette plateforme digitale combine un design attractif, une navigation fluide et un système de commande efficace pour valoriser l'offre culinaire unique de l'établissement.</p>
-                    <a href="#" class="btn btn-primary">EN SAVOIR PLUS</a>
-                </div>
-            </div>
+                    <div class="project-info">
+                        <h3>Ets Ngounou</h3>
+                        <p>Site vitrine élégant pour une entreprise de produits de mer, mettant en valeur les produits frais avec une expérience utilisateur optimale.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <a href="https://ngounoup.netlify.app/" class="project-link" target="_blank">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-            <div class="row align-items-center mb-5 flex-lg-row-reverse">
-                <div class="col-lg-6 mb-4">
+                <!-- Projet 3 -->
+                <article class="project-card project-card-3">
                     <div class="project-image">
-                        <img src="images/wifizone.png" alt="Projet 2" class="img-fluid rounded shadow">
+                        <img src="images/delices-sawa.png" alt="Les Délices Sawa">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">Restaurant</span>
+                                <span class="tag">E-Commerce</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-3">Wifizone</h3>
-                    <p class="text-muted">Wifizone est une application innovante qui permet aux utilisateurs d'accéder à une connexion internet haut débit via le réseau satellite Starlink. Une solution moderne pour profiter d'une connectivité fiable et ultra-rapide, partout et en tout temps.</p>
-                    <a href="https://ngounoup.netlify.app/" class="btn btn-primary">EN SAVOIR PLUS</a>
-                </div>
-            </div>
+                    <div class="project-info">
+                        <h3>Les Délices Sawa</h3>
+                        <p>Plateforme e-commerce pour restaurant avec menu interactif, système de commande et design immersif célébrant la culture Sawa.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
+                        <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4">
+                <!-- Projet 4 -->
+                <article class="project-card project-card-4">
                     <div class="project-image">
-                        <img src="images/serpent.png" alt="Projet 3" class="img-fluid rounded shadow">
+                        <img src="images/wifizone.png" alt="Wifizone">
+                        <div class="project-overlay">
+                            <div class="project-tags">
+                                <span class="tag">SaaS</span>
+                                <span class="tag">Connectivity</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-3">Jeu de Serpent</h3>
-                    <p class="text-muted">Le Jeu de Serpent est une application ludique que j'ai développée durant ma formation en JavaScript. Ce projet m'a permis de maîtriser les concepts de programmation orientée objet, la gestion des événements et l'animation canvas.</p>
-                    <a href="#" class="btn btn-primary">EN SAVOIR PLUS</a>
-                </div>
+                    <div class="project-info">
+                        <h3>Wifizone</h3>
+                        <p>Plateforme innovante pour accéder à la connexion internet via satellite Starlink avec interface intuitive et performante.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Vue.js</span>
+                            <span class="tech-badge">Firebase</span>
+                            <span class="tech-badge">Tailwind</span>
+                        </div>
+                        <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
             </div>
-
         </div>
     </section>
 
     <!-- Section Contact -->
-    <section id="contact" class="section-padding">
+    <section id="contact" class="contact-section">
+        <div class="contact-background">
+            <div class="contact-orb orb-1"></div>
+            <div class="contact-orb orb-2"></div>
+        </div>
+
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="section-title text-center text-primary mb-3">Send me a message!</h2>
-                    <p class="text-center text-muted mb-5">Vous avez une question ou une suggestion, ou vous souhaitez simplement dire bonjour? N'hésitez pas!</p>
-                    
-                    <form id="contactForm">
-                        <div class="row mb-4">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted">Votre Nom</label>
-                                <input type="text" class="form-control form-control-lg" placeholder="Entrez votre Nom" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label text-muted">Addresse Email</label>
-                                <input type="email" class="form-control form-control-lg" placeholder="Entrez votre addresse email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="form-label text-muted">Ton Message</label>
-                            <textarea class="form-control form-control-lg" rows="5" placeholder="Bonjour, je pense que nous avons besoin d'un système de conception pour nos produits chez Company X. Quand pourriez-vous vous joindre à nous pour en discuter ?" required></textarea>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg px-5">
-                                SHOOT <i class="fas fa-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </form>
+            <div class="section-header">
+                <h2 class="section-title">Travaillons Ensemble</h2>
+                <p class="section-subtitle">Vous avez un projet en tête ? Parlons-en !</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:jolinetebu@gmail.com">jolinetebu@gmail.com</a></p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>WhatsApp</h3>
+                        <p><a href="https://wa.me/237657662216" target="_blank">+237 657 662 216</a></p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://www.linkedin.com/in/joline-tebu-8ab935345/" target="_blank">Visitez mon profil</a></p>
+                    </div>
                 </div>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Votre nom" required>
+                        <label class="form-label">Nom complet</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Votre email" required>
+                        <label class="form-label">Adresse email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Sujet du message" required>
+                        <label class="form-label">Sujet</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input form-textarea" placeholder="Votre message..." rows="5" required></textarea>
+                        <label class="form-label">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Envoyer le message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer bg-dark text-white py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h4 class="mb-3">JOLINE</h4>
-                    <p>Une développeuse Web axée sur le front-end qui crée le front-end des sites Web et des applications Web qui mènent au succès du produit global</p>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <h4 class="mb-3">SOCIALE</h4>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Joline Tebu</h4>
+                <p>Développeuse Frontend créative et passionnée, créant des expériences web exceptionnelles.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À Propos</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Réseaux Sociaux</h4>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/joline-tebu-8ab935345/" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/joleen2026/" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/joleentebu/?hl=fr" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
-            <hr class="bg-white my-4">
-            <div class="text-center">
-                <p class="mb-0">© Copyright 2025. Réalisé par <a href="#" class="text-white">Joline</a></p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Joline Tebu. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Chat Button -->
-    <div class="chat-button">
-        <button class="btn btn-primary rounded-circle">
-            <i class="fas fa-comment"></i>
-        </button>
-        <span class="chat-text">Chat with me 👋</span>
+    <!-- Floating Action Button -->
+    <div class="fab" id="fabButton">
+        <i class="fas fa-comment"></i>
+        <span class="fab-tooltip">Chat avec moi</span>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

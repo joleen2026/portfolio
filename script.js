@@ -1,8 +1,16 @@
-// script.js
+// script.js - Portfolio Moderne & Sophistiqué
 
-// Navigation scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
+// ========== DOM ELEMENTS ==========
+const navbar = document.querySelector('.navbar');
+const menuToggle = document.getElementById('menuToggle');
+const navbarMenu = document.getElementById('navbarMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+const contactForm = document.getElementById('contactForm');
+const fabButton = document.getElementById('fabButton');
+
+// ========== NAVBAR MANAGEMENT ==========
+// Sticky navbar on scroll
+window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -10,38 +18,48 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Smooth scroll for navigation links
+// Mobile menu toggle
+menuToggle.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+});
+
+// Close menu on link click
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+    });
+});
+
+// Smooth scroll navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80;
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
+        if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     });
 });
 
-// Active navigation link on scroll
+// ========== ACTIVE NAV LINK ==========
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
 
-function activateNavLink() {
+function updateActiveNav() {
     let current = '';
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= sectionTop - 100) {
+        
+        if (window.pageYOffset >= sectionTop - 150) {
             current = section.getAttribute('id');
         }
     });
@@ -54,173 +72,276 @@ function activateNavLink() {
     });
 }
 
-window.addEventListener('scroll', activateNavLink);
+window.addEventListener('scroll', updateActiveNav);
 
-// Contact form submission - Send to Gmail
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Simple validation
-        if (name && email && message) {
-            // Create mailto link with form data
-            const subject = encodeURIComponent(`Nouveau message de ${name} via Portfolio`);
-            const body = encodeURIComponent(
-                `Nom: ${name}\n` +
-                `Email: ${email}\n\n` +
-                `Message:\n${message}`
-            );
-            const mailtoLink = `mailto:jolinetebu@gmail.com?subject=${subject}&body=${body}`;
-            
-            // Open default email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('Votre client email va s\'ouvrir pour envoyer le message. Merci !');
-            
-            // Reset form after short delay
-            setTimeout(() => {
-                contactForm.reset();
-            }, 1000);
-        } else {
-            alert('Veuillez remplir tous les champs du formulaire.');
-        }
-    });
-}
+// ========== CONTACT FORM ==========
+contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-// Chat button functionality - Redirect to WhatsApp
-const chatButton = document.querySelector('.chat-button button');
-if (chatButton) {
-    chatButton.addEventListener('click', function() {
-        // WhatsApp number (country code + number without +)
-        const phoneNumber = '237657662216'; // Cameroon country code + your number
-        const message = encodeURIComponent('Bonjour Joline, je visite votre portfolio et j\'aimerais discuter avec vous.');
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-        
-        // Open WhatsApp in new tab
-        window.open(whatsappURL, '_blank');
-    });
-}
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const subject = this.querySelector('input[type="text"]:nth-of-type(2)').value;
+    const message = this.querySelector('textarea').value;
 
-// Intersection Observer for fade-in animations
+    if (name && email && subject && message) {
+        const mailSubject = encodeURIComponent(`[Portfolio] ${subject}`);
+        const mailBody = encodeURIComponent(
+            `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        );
+        
+        window.location.href = `mailto:jolinetebu@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+        
+        // Show success message
+        showNotification('Message envoyé! Merci de votre contact.', 'success');
+        
+        // Reset form
+        setTimeout(() => this.reset(), 500);
+    } else {
+        showNotification('Veuillez remplir tous les champs.', 'error');
+    }
+});
+
+// ========== FAB BUTTON ==========
+fabButton.addEventListener('click', () => {
+    const phoneNumber = '237657662216';
+    const message = encodeURIComponent('Bonjour Joline, je visite votre portfolio et j\'aimerais discuter avec vous.');
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappURL, '_blank');
+});
+
+// ========== ANIMATIONS & OBSERVERS ==========
+
+// Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
+            entry.target.style.animation = `slideInUp 0.8s ease forwards`;
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.section-title, .hero-title, .project-image, .skill-badge');
-    animatedElements.forEach(el => observer.observe(el));
-});
+// Observe elements
+document.querySelectorAll(
+    '.section-title, .project-card, .skill-card, .info-card, .about-highlights'
+).forEach(el => observer.observe(el));
 
-// Navbar background change on scroll
-let lastScroll = 0;
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        document.querySelector('.navbar').style.boxShadow = 'none';
-    } else {
-        document.querySelector('.navbar').style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Social icons hover effect
-const socialIcons = document.querySelectorAll('.social-icon');
-socialIcons.forEach(icon => {
-    icon.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateX(5px) scale(1.1)';
-    });
-    
-    icon.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateX(0) scale(1)';
-    });
-});
-
-// Project cards hover effect
-const projectImages = document.querySelectorAll('.project-image');
-projectImages.forEach(project => {
-    project.addEventListener('mouseenter', function() {
-        this.querySelector('img').style.transform = 'scale(1.08)';
-    });
-    
-    project.addEventListener('mouseleave', function() {
-        this.querySelector('img').style.transform = 'scale(1)';
-    });
-});
-
-// Skills badges animation on hover
-const skillBadges = document.querySelectorAll('.skill-badge');
-skillBadges.forEach(badge => {
-    badge.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-    });
-    
-    badge.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-// Loading animation
-window.addEventListener('load', function() {
-    document.body.style.opacity = '0';
-    setTimeout(function() {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Mobile menu close on link click
-const mobileLinks = document.querySelectorAll('.navbar-nav .nav-link');
-const navbarToggler = document.querySelector('.navbar-toggler');
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        if (window.innerWidth < 992) {
-            navbarToggler.click();
+// ========== SKILL BARS ANIMATION ==========
+const skillProgressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const progressBars = entry.target.querySelectorAll('.skill-progress');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+            skillProgressObserver.unobserve(entry.target);
         }
     });
-});
+}, { threshold: 0.5 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
-        const scrolled = window.pageYOffset;
-        heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
+document.querySelector('.skills-grid')?.parentElement?.addEventListener('mouseenter', function() {
+    if (!this.dataset.observed) {
+        skillProgressObserver.observe(document.querySelector('.skills-section'));
+        this.dataset.observed = true;
     }
 });
 
-// Form input focus effects
-const formInputs = document.querySelectorAll('.form-control');
+// ========== PARALLAX EFFECT ==========
+window.addEventListener('scroll', () => {
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection && window.scrollY < window.innerHeight) {
+        const scrolled = window.scrollY;
+        const orbs = document.querySelectorAll('.gradient-orb');
+        orbs.forEach((orb, index) => {
+            orb.style.transform = `translateY(${scrolled * (0.5 + index * 0.1)}px)`;
+        });
+    }
+});
+
+// ========== NOTIFICATION SYSTEM ==========
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 30px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        padding: 16px 24px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        animation: slideInRight 0.4s ease;
+        font-weight: 500;
+        max-width: 400px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.4s ease';
+        setTimeout(() => notification.remove(), 400);
+    }, 4000);
+}
+
+// ========== FORM INPUT ANIMATION ==========
+const formInputs = document.querySelectorAll('.form-input');
 formInputs.forEach(input => {
     input.addEventListener('focus', function() {
-        this.parentElement.querySelector('.form-label').style.color = 'var(--primary-color)';
+        this.parentElement.style.transform = 'scale(1.02)';
     });
     
     input.addEventListener('blur', function() {
-        this.parentElement.querySelector('.form-label').style.color = '';
+        this.parentElement.style.transform = 'scale(1)';
     });
 });
 
-// Console message
-console.log('%c👋 Bienvenue sur mon portfolio !', 'color: #6366f1; font-size: 20px; font-weight: bold;');
-console.log('%cDéveloppé par Joline', 'color: #4f46e5; font-size: 14px;');
+// ========== PROJECT CARDS HOVER ==========
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+    
+    card.addEventListener('mouseenter', function() {
+        projectCards.forEach(c => {
+            if (c !== this) {
+                c.style.opacity = '0.7';
+                c.style.filter = 'blur(2px)';
+            }
+        });
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        projectCards.forEach(c => {
+            c.style.opacity = '1';
+            c.style.filter = 'blur(0)';
+        });
+    });
+});
+
+// ========== FLOATING CARDS INTERACTION ==========
+const floatingCards = document.querySelectorAll('.floating-card');
+floatingCards.forEach(card => {
+    card.addEventListener('click', function() {
+        this.style.transform = 'rotateZ(360deg) scale(1.2)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 600);
+    });
+});
+
+// ========== RANDOM GRADIENT COLORS ==========
+function getRandomColor() {
+    const colors = [
+        'linear-gradient(135deg, #6366f1, #ec4899)',
+        'linear-gradient(135deg, #06b6d4, #6366f1)',
+        'linear-gradient(135deg, #ec4899, #f97316)',
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Apply random gradients to floating cards on load
+window.addEventListener('load', () => {
+    floatingCards.forEach((card, index) => {
+        card.style.animation = `bounce ${3 + index * 0.5}s ease-in-out infinite`;
+    });
+});
+
+// ========== SCROLL TO TOP BUTTON ==========
+const scrollButton = document.createElement('button');
+scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+scrollButton.style.cssText = `
+    position: fixed;
+    bottom: 120px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+    font-size: 1.2rem;
+`;
+
+document.body.appendChild(scrollButton);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        scrollButton.style.opacity = '1';
+        scrollButton.style.visibility = 'visible';
+    } else {
+        scrollButton.style.opacity = '0';
+        scrollButton.style.visibility = 'hidden';
+    }
+});
+
+scrollButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+scrollButton.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.2) translateY(-5px)';
+});
+
+scrollButton.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1) translateY(0)';
+});
+
+// ========== PRELOAD IMAGES ==========
+function preloadImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        const imageLoader = new Image();
+        imageLoader.src = img.src;
+    });
+}
+
+window.addEventListener('load', preloadImages);
+
+// ========== PERFORMANCE OPTIMIZATION ==========
+// Debounce scroll events
+function debounce(func, wait = 10) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+window.addEventListener('scroll', debounce(() => {
+    updateActiveNav();
+}, 15));
+
+// ========== CONSOLE MESSAGE ==========
+console.log('%c🚀 Portfolio Joline - Modern & Sophisticated', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+console.log('%c✨ Design & Development by Joline Tebu', 'color: #ec4899; font-size: 12px;');
+console.log('%c📱 Responsive • ⚡ Fast • 🎨 Beautiful', 'color: #06b6d4; font-size: 11px;');
